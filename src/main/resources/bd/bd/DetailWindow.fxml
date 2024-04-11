@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane stylesheets="@./style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bd.bd.DetailWindowController">
+    <top>
+        <Label style="-fx-font-size: 20px; -fx-padding: 10px;" text="Детали и их поставщики " BorderPane.alignment="CENTER" />
+    </top>
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+            <TextField fx:id="searchField" prefHeight="23.0" prefWidth="335.0" promptText="Введите номер детали..." style="-fx-background-color: white;" />
+            <Button onAction="#handleSearch" style="-fx-background-color: white;" text="Поиск" />
+
+            <TableView fx:id="detailsTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="detailsNumberColumn" prefWidth="150" text="Номер детали" />
+                    <TableColumn fx:id="manufacturColumn" prefWidth="150" text="Производитель" />
+                    <TableColumn fx:id="providerNameColumn" prefWidth="150" text="Поставщик" />
+                    <TableColumn fx:id="priceColumn" prefWidth="120" text="Стоимость детали" />
+                    <TableColumn fx:id="amountColumn" prefWidth="100" text="Количество" />
+                    <TableColumn fx:id="deliveryColumn" prefWidth="120" text="Срок поставки" />
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="mainPane" prefHeight="522.0" prefWidth="1361.0" stylesheets="@./style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bd.bd.DatabaseUserController">
+    <SplitPane dividerPositions="0.3" layoutX="10.0" layoutY="10.0" prefHeight="502.0" prefWidth="1361.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="10.0">
+        <items>
+            <AnchorPane fx:id="sidePanel" maxWidth="500" minWidth="400"  minHeight="500" maxHeight="600">
+                <children>
+                    <VBox alignment="TOP_CENTER" layoutX="40.0" layoutY="5.0" prefHeight="491.0" prefWidth="241.0"
+                          spacing="10" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="40.0"
+                          AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="5.0">
+                        <Label styleClass="header-label" text="DB Manager"/>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="@../../Icon.png"/>
+                        </ImageView>
+                        <Separator/>
+                        <Button onAction="#handleAddRecord" styleClass="menu-button" text="Добавить запись"/>
+                        <Button onAction="#handleUserInput" styleClass="menu-button" text="Спросить у ИИ"/>
+
+
+                        <Button onAction="#handleShowDetails" styleClass="menu-button" text="Посмотреть детали"/>
+                        <Button onAction="#handleDeleteRecord" styleClass="menu-button" text="Удалить выбранную запись"/>
+                        <Button onAction="#handleShowAllRecords" styleClass="menu-button" text="Показать все заказы"/>
+                        <Separator/>
+                        <Button onAction="#handleExit" styleClass="close-button" text="Выход из аккаунта"/>
+                    </VBox>
+                </children>
+            </AnchorPane>
+            <AnchorPane fx:id="contentPanel" prefHeight="510.0" prefWidth="922.0">
+                <children>
+                    <VBox spacing="20" AnchorPane.bottomAnchor="15" AnchorPane.leftAnchor="15" AnchorPane.rightAnchor="15" AnchorPane.topAnchor="15">
+                        <Label fx:id="contentHeader" styleClass="content-header" text="Работа с базой данных" />
+                        <TableView fx:id="databaseTable" prefHeight="427.0" prefWidth="919.0" styleClass="database-table">
+                            <columns>
+                                <TableColumn fx:id="columnOrderId" text="Номер заказа" />
+                                <TableColumn fx:id="columnDatetime" prefWidth="108.0" text="Время совершения заказа" />
+                                <TableColumn fx:id="columnStatus" prefWidth="52.00001525878906" text="Статус" />
+                                <TableColumn fx:id="columnCustomerName" prefWidth="114.0" text="Имя клиента" />
+                                <TableColumn fx:id="columnCustomerPhone" prefWidth="109.0" text="Телефон клиента" />
+                                <TableColumn fx:id="columnEmployeeName" prefWidth="105.0" text="Имя работника" />
+                                <TableColumn fx:id="columnDetailsNumber" prefWidth="91.20001220703125" text="Номер запчасти" />
+                                <TableColumn fx:id="columnAmount" prefWidth="44.0" text="Кол-во заказанных деталей" />
+                                <TableColumn fx:id="columnProviderName" prefWidth="108.0" text="Имя поставщика" />
+                                <TableColumn fx:id="columnDetailDelivery" prefWidth="124.7999267578125" text="Время доставки" />
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </children>
+            </AnchorPane>
+        </items>
+    </SplitPane>
+</AnchorPane>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="391.0" prefWidth="516.0" style="-fx-background-color: #333;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bd.bd.AuthenticationController">
+    <children>
+        <VBox alignment="CENTER" layoutX="200.0" layoutY="50.0" spacing="20.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+            <children>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <Label text="Sign In Form" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="usernameField" promptText="Username">
+                    <VBox.margin>
+                        <Insets top="0.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </TextField>
+                <PasswordField fx:id="passwordField" promptText="Password">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </PasswordField>
+                <Button fx:id="registerButton" text="Register" onAction="#registerButtonAction" style="-fx-text-fill: white;">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                </Button>
+                <Button fx:id="signInButton" mnemonicParsing="false"  onAction="#signInButtonAction" text="Sign In">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                </Button>
+            </children>
+            <padding>
+                <Insets top="50.0" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

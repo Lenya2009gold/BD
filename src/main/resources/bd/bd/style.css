@@ -1,0 +1,93 @@
+.root {
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.button {
+    -fx-background-radius: 0;
+    -fx-background-color: #333;
+    -fx-text-fill: black;
+}
+.header-label {
+    -fx-font-size: 20px;
+    -fx-padding: 10px;
+    -fx-text-fill: black; /* Установите черный цвет текста */
+}
+
+
+.text-field {
+    -fx-background-radius: 0;
+    -fx-background-color: #333;
+    -fx-text-fill: black;
+}
+
+.text-field:focused {
+    -fx-background-color: #555;
+}
+
+.label {
+    -fx-text-fill: white;
+}
+
+.hyperlink {
+    -fx-text-fill: white;
+}
+.menu-button {
+    -fx-background-color: #4E5B6E; /* Установите предпочитаемый цвет для кнопок */
+    -fx-text-fill: white; /* Белый текст для лучшей видимости */
+    -fx-font-weight: bold; /* Жирный шрифт для улучшения читаемости */
+    -fx-border-radius: 5; /* Закругленные углы */
+    -fx-background-radius: 5; /* Закругленный фон для соответствия границам */
+    -fx-padding: 10 20; /* Отступы внутри кнопки для увеличения кликабельной области */
+}
+
+.menu-button:hover {
+    -fx-background-color: #687D99; /* Светлее при наведении для интерактивности */
+}
+
+.close-button {
+    -fx-background-color: #D9534F; /* Красный фон для кнопки закрытия */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.close-button:hover {
+    -fx-background-color: #C9302C; /* Светлее при наведении */
+}
+.header-label, .subheader-label {
+    -fx-text-fill: #4E5B6E; /* Темный цвет текста для заголовков */
+    -fx-font-weight: bold;
+    -fx-font-size: 18px; /* Больший размер шрифта для заголовков */
+}
+
+.content-header {
+    -fx-text-fill: #4E5B6E; /* Темный цвет текста для содержимого */
+    -fx-font-size: 16px; /* Подходящий размер шрифта для содержимого */
+}
+.database-table {
+    -fx-border-color: #4E5B6E;
+    -fx-border-radius: 5;
+    -fx-background-color: #FFF;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-view {
+    -fx-base: #E3E3E3;
+    -fx-control-inner-background: #E3E3E3;
+    -fx-background-color: #E3E3E3;
+    -fx-table-header-border-color: #4E5B6E;
+}
+
+.table-column {
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #4E5B6E;
+}
+
+.table-row-cell {
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+}
+
+.table-row-cell:filled:selected, .table-row-cell:filled:selected .text {
+    -fx-background-color: #687D99;
+    -fx-text-fill: white;
+}
