@@ -1,18 +1,12 @@
-package bd.bd;
+package bd.bd.controllers;
 
+import bd.bd.MainApplication;
+import bd.bd.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class AuthenticationController {
     public Button registerButton;
@@ -22,6 +16,7 @@ public class AuthenticationController {
     private PasswordField passwordField;
     @FXML
     private Button signInButton;
+
     private MainApplication app;
     public void setApp(MainApplication app) {
         this.app = app; // Устанавливаем ссылку на основное приложение
@@ -36,16 +31,22 @@ public class AuthenticationController {
         if(username.isEmpty() || password.isEmpty())
         {
             Alerts.showErr("Введите данные для входа.");
-
+            return;
         }
         if (user != null) {
-            if ("admin".equals(user.getRole())) {
-                app.switchWindow("adminWindow.fxml", "Admin Dashboard");
-            } else if ("user".equals(user.getRole())) {
-                app.switchWindow("userWindow.fxml", "User Dashboard");
+            switch (user.getRole())
+            {
+                case "admin":
+                    app.switchWindow("adminWindow.fxml", "Admin Dashboard");
+                    break;
+                case "user":
+                    app.switchWindow("userWindow.fxml", "User Dashboard");
+                    break;
+                default:
+                    Alerts.showErr("Вы кто?");
+                    break;
+
             }
-        } else {
-            Alerts.showErr("Неверный логин или пароль. Пожалуйста, попробуйте снова.");
         }
     }
     public void registerButtonAction(ActionEvent actionEvent) {

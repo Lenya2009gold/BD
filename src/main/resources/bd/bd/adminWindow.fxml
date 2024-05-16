@@ -1,49 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-
-<AnchorPane fx:id="mainPane" prefHeight="522.0" prefWidth="1352.0" stylesheets="@./style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bd.bd.DatabaseAdminController">
-    <SplitPane dividerPositions="0.4" layoutX="10.0" layoutY="10.0" prefHeight="516.0" prefWidth="500.0" AnchorPane.bottomAnchor="-4.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="10.0">
-        <items>
-            <AnchorPane fx:id="sidePanel" maxHeight="600" maxWidth="600" minHeight="500" minWidth="500">
-                <children>
-                    <VBox alignment="TOP_CENTER" layoutX="40.0" layoutY="5.0" prefHeight="491.0" prefWidth="241.0" spacing="10" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="5.0">
-                        <Label styleClass="header-label" text="DB Manager Admin" />
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                            <Image url="@../../Icon.png" />
-                        </ImageView>
-                        <Separator />
-                        <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleShowUsers" styleClass="menu-button" text="Показать всех пользователей">
-                        </Button>
-
-                        <Button onAction="#handleDeleteRecord" styleClass="menu-button" text="Удалить выбранный аккаунт" />
-
-                        <Button fx:id="addNewUserButton" mnemonicParsing="false" onAction="#handleAddNewUser" styleClass="menu-button" text="Добавить нового пользователя">
-                        </Button>
-                        <Button fx:id="editPassButton" mnemonicParsing="false" onAction="#handleEditPass" styleClass="menu-button" text="Изменить пароль пользователю">
-                        </Button>
-                        <Separator />
-                        <Button onAction="#handleExit" styleClass="close-button" text="Выход из аккаунта" />
-                    </VBox>
-                </children>
-            </AnchorPane>
-            <AnchorPane fx:id="contentPanel" prefHeight="515.0" prefWidth="942.0">
-                <children>
-                    <VBox prefHeight="471.0" prefWidth="537.0" spacing="20" AnchorPane.bottomAnchor="15" AnchorPane.leftAnchor="15" AnchorPane.rightAnchor="397.0" AnchorPane.topAnchor="15">
-                        <Label fx:id="contentHeader" styleClass="content-header" text="Работа с базой данных" />
-                        <TableView fx:id="usersTable" prefHeight="432.0" prefWidth="509.0" styleClass="database-table">
-                            <columns>
-                                <TableColumn fx:id="columnId" text="Id" />
-                                <TableColumn fx:id="columnLogin" prefWidth="136.0" text="Логин" />
-                                <TableColumn fx:id="columnName" prefWidth="161.4000244140625" text="Имя" />
-                                <TableColumn fx:id="columnRole" prefWidth="119.39996337890625" text="Тип аккаунта" />
-                            </columns>
-                        </TableView>
-                    </VBox>
-                </children>
-            </AnchorPane>
-        </items>
-    </SplitPane>
+<AnchorPane fx:id="mainPane" prefHeight="600.0" prefWidth="900.0" stylesheets="@./style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bd.bd.controllers.DatabaseAdminController">
+<SplitPane dividerPositions="0.299" layoutX="10.0" layoutY="11.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <items>
+        <AnchorPane fx:id="sidePanel" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <children>
+                <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="580.0" prefWidth="250.0" spacing="10">
+                    <Label styleClass="header-label" text="DB Manager Admin" />
+                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../../Icon.png" />
+                    </ImageView>
+                    <Separator />
+                    <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleShowUsers" styleClass="menu-button" text="Показать всех пользователей" />
+                    <Button onAction="#handleDeleteRecord" styleClass="menu-button" text="Удалить выбранный аккаунт" />
+                    <Button fx:id="addNewUserButton" mnemonicParsing="false" onAction="#handleAddNewUser" styleClass="menu-button" text="Добавить нового пользователя" />
+                    <Button fx:id="editPassButton" mnemonicParsing="false" onAction="#handleEditPass" styleClass="menu-button" text="Изменить пароль пользователю" />
+                    <Separator />
+                    <Button onAction="#handleExit" styleClass="close-button" text="Выход из аккаунта" />
+                </VBox>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="contentPanel" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <children>
+                <VBox prefHeight="580.0" prefWidth="620.0" spacing="20" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <Label fx:id="contentHeader" styleClass="content-header" text="Работа с базой данных" />
+                    <TableView fx:id="usersTable" prefHeight="530.0" prefWidth="600.0" styleClass="database-table">
+                        <columns>
+                            <TableColumn fx:id="columnId" prefWidth="50.0" text="Id" />
+                            <TableColumn fx:id="columnLogin" prefWidth="200.0" text="Логин" />
+                            <TableColumn fx:id="columnName" prefWidth="200.0" text="Имя" />
+                            <TableColumn fx:id="columnRole" prefWidth="150.0" text="Тип аккаунта" />
+                        </columns>
+                    </TableView>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </items>
+</SplitPane>
 </AnchorPane>

@@ -48,6 +48,11 @@
             <artifactId>controlsfx</artifactId>
             <version>11.1.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.jasypt</groupId>
+            <artifactId>jasypt-hibernate5</artifactId>
+            <version>1.9.3</version>
+        </dependency>
 
     </dependencies>
 

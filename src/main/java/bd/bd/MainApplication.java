@@ -1,5 +1,6 @@
 package bd.bd;
 
+import bd.bd.controllers.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,7 +9,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Arrays;
+
 
 public class MainApplication extends Application {
     private static Stage primaryStage;
@@ -27,7 +28,6 @@ public class MainApplication extends Application {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent root = loader.load();
-            // Проверяем, является ли контроллер DatabaseUserController и устанавливаем ссылку на app
             Object controller = loader.getController();
             if (controller instanceof DatabaseUserController) {
                 ((DatabaseUserController)controller).setApp(this);
@@ -46,13 +46,15 @@ public class MainApplication extends Application {
             }
             if (controller instanceof RegistrationController) {
                 ((RegistrationController)controller).setApp(this);
-/*
-                RegistrationController.setCurrentUserRole(userRole);
-*/
-
             }
             if (controller instanceof DatabaseAdminController) {
                 ((DatabaseAdminController)controller).setApp(this);
+            }
+            if (controller instanceof DetailWindowController) {
+                ((DetailWindowController)controller).setApp(this);
+            }
+            if (controller instanceof AddNewDetailController) {
+                ((AddNewDetailController)controller).setApp(this);
             }
             Scene scene = new Scene(root);
             primaryStage.setTitle(title);
@@ -73,7 +75,12 @@ public class MainApplication extends Application {
             if (controller instanceof AddNewUserController) {
                 ((AddNewUserController)controller).setApp(this);
             }
-            //controller.loadDetails();
+            if (controller instanceof DetailWindowController) {
+                ((DetailWindowController)controller).setApp(this);
+            }
+            if (controller instanceof AddNewDetailController) {
+                ((AddNewDetailController)controller).setApp(this);
+            }
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setTitle(title);
@@ -86,7 +93,7 @@ public class MainApplication extends Application {
             Alerts.showErr(e.getMessage());
         }
     }
-    protected void showLoginWindow() {
+    public void showLoginWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("authentication.fxml"));
             Parent root = loader.load();

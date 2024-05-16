@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane fx:id="mainPane" stylesheets="@./style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bd.bd.controllers.AddNewDetailController">
+    <top>
+        <Label styleClass="header-label" text="Добавить деталь" BorderPane.alignment="CENTER" />
+    </top>
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+            <Tab text="Добавить деталь">
+                <VBox prefHeight="215.0" prefWidth="281.0" spacing="10" style="-fx-padding: 10;" styleClass="vbox">
+                    <TextField fx:id="detailNumberField" promptText="Введите номер детали" styleClass="text-field"  />
+                    <TextField fx:id="manufacturerField" promptText="Введите производителя" styleClass="text-field" />
+                    <TextField fx:id="providerNameField" promptText="Введите имя поставщика" styleClass="text-field" />
+                    <TextField fx:id="providerAddressField" promptText="Введите адрес поставщика" styleClass="text-field" />
+                    <TextField fx:id="providerContactField" promptText="Введите контактные данные" styleClass="text-field" />
+                    <TextField fx:id="providerPriceField" promptText="Введите стоимость детали" styleClass="text-field" />
+                    <TextField fx:id="providerDeliveryField" promptText="Введите время доставки" styleClass="text-field" />
+                    <TextField fx:id="providerAmountField" promptText="Введите количество деталей у поставщика" styleClass="text-field" />
+                    <Button onAction="#handleAddDetail" styleClass="menu-button" text="Добавить деталь" />
+                </VBox>
+            </Tab>
+        </TabPane>
+    </center>
+</BorderPane>

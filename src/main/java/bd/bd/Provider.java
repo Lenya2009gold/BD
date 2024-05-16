@@ -4,13 +4,22 @@ public class Provider {
     private int id;
     private String name;
     private String detailDelivery;
+    private String adress;
+    private String contact;
+    private int price;
     private int availableAmount;
+    private String detailsNumber;
+    private String manufactur;
 
-    public Provider(int id, String name, String detailDelivery, int avaliableAmount) {
-        this.id = id;
+    public Provider(String name, String detailDelivery, String adress, String contact, int price, int availableAmount, String detailsNumber, String manufactur) {
         this.name = name;
+        this.adress = adress;
+        this.contact = contact;
+        this.price = price;
         this.detailDelivery = detailDelivery;
-        this.availableAmount = avaliableAmount;
+        this.availableAmount = availableAmount;
+        this.detailsNumber = detailsNumber;
+        this.manufactur = manufactur;
     }
 
     public String getDetail_delivery() {
@@ -38,7 +47,7 @@ public class Provider {
     }
     @Override
     public String toString() {
-        return name + " " + detailDelivery; // Измените это в соответствии с вашими требованиями
+        return name + " " + detailDelivery;
     }
 
     public int getAvailableAmount() {

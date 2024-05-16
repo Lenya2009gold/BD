@@ -37,7 +37,6 @@ public class Customer {
         this.phone = phone;
     }
 
-    // Переопределение toString() для отображения имени в ComboBox
     @Override
     public String toString() {
         return name;

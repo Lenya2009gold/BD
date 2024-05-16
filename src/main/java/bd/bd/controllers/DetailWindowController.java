@@ -1,8 +1,11 @@
-package bd.bd;
+package bd.bd.controllers;
 
+import bd.bd.DetailProviderDAO;
+import bd.bd.DetailProviderDAOImpl;
+import bd.bd.DetailProviderData;
+import bd.bd.MainApplication;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -31,6 +34,7 @@ public class DetailWindowController {
     private TableColumn<DetailProviderData, String> deliveryColumn;
     @FXML
     private TableColumn<DetailProviderData, Number> priceColumn;
+    private final DetailProviderDAO detailProviderDAO = new DetailProviderDAOImpl();
     private MainApplication app;
     public void setApp(MainApplication app) {
         this.app = app;
@@ -49,37 +53,7 @@ public class DetailWindowController {
     }
     protected void loadDetails() {
         detailsproviders.clear();
-//        String SQL_SELECT="SELECT \"Detail\".\"DetailsNumber\", \"Detail\".\"Manufactur\", \"Detail\".\"Amount\", \n" +
-//                "       \"Provider\".\"Name\" AS \"ProviderName\", \"Provider\".\"Detail_delivery\", \"Provider\".\"Price\"\n" +
-//                "FROM \"Detail\"\n" +
-//                "JOIN \"Provider\" ON \"Detail\".\"Provider_id\" = \"Provider\".\"Provider_id\";\n";
-        String SQL_SELECT = "SELECT \"Detail\".\"DetailsNumber\", \"Detail\".\"Manufactur\", " +
-                "\"Provider\".\"Name\" AS \"ProviderName\", \"Provider\".\"Detail_delivery\", \"Provider\".\"Price\", \"Provider\".\"Amount_available\"\n" +
-                "FROM \"Detail\"\n" +
-                "JOIN \"Provider\" ON \"Detail\".\"Provider_id\" = \"Provider\".\"Provider_id\";";
-
-        try(Connection conn = DatabaseHandler.connect();
-            PreparedStatement pstmt = conn.prepareStatement(SQL_SELECT))
-        {
-            ResultSet rs = pstmt.executeQuery();
-            while (rs.next())
-            {
-                detailsproviders.add(new DetailProviderData(rs.getString("detailsNumber"),
-                        rs.getString("manufactur"),
-                        rs.getInt("Amount_available"),
-                        rs.getInt("price"),
-                        rs.getString("providerName"),
-                        rs.getString("Detail_delivery")));
-            }
-            detailsTable.setItems(detailsproviders);
-
-        }
-        catch (SQLException e) {
-            System.out.println(e.getMessage());
-            Alerts.showErrSQL(e.getMessage());
-        }
-
-
+        detailsproviders.addAll(detailProviderDAO.loadDetails());
     }
 
 
@@ -101,6 +75,14 @@ public class DetailWindowController {
             detailsTable.setItems(filteredlist);
         }
 
+    }
+
+    public void handleAddDetail(ActionEvent actionEvent) {
+        setApp(app);
+        app.newWindow("Добавление новой детали","AddNewDetail.fxml");
+    }
+
+    public void handleAddProvider(ActionEvent actionEvent) {
     }
 }
 

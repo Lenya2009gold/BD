@@ -8,6 +8,8 @@ public class DetailProviderData {
 
     private String providerName;
     private String detailDelivery;
+    private String adress;
+    private String contact;
 
     public DetailProviderData(String detailsNumber, String manufactur, int amount,int price, String providerName, String detailDelivery) {
         this.detailsNumber = detailsNumber;

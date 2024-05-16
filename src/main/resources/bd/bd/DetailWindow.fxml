@@ -4,9 +4,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane stylesheets="@./style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bd.bd.DetailWindowController">
+<BorderPane stylesheets="@./style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bd.bd.controllers.DetailWindowController">
     <top>
-        <Label style="-fx-font-size: 20px; -fx-padding: 10px;" text="Детали и их поставщики " BorderPane.alignment="CENTER" />
+        <Label style="-fx-font-size: 20px; -fx-padding: 10px; -fx-text-fill: black;" text="Детали и их поставщики" BorderPane.alignment="CENTER"/>
     </top>
     <center>
         <VBox spacing="10">
@@ -14,8 +14,10 @@
                 <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
             <TextField fx:id="searchField" prefHeight="23.0" prefWidth="335.0" promptText="Введите номер детали..." style="-fx-background-color: white;" />
-            <Button onAction="#handleSearch" style="-fx-background-color: white;" text="Поиск" />
-
+            <HBox spacing="10">
+                <Button onAction="#handleSearch" style="-fx-background-color: white;" text="Обновить список" />
+                <Button onAction="#handleAddDetail" style="-fx-background-color: white;" text="Добавить новую запчасть" />
+            </HBox>
             <TableView fx:id="detailsTable" VBox.vgrow="ALWAYS">
                 <columns>
                     <TableColumn fx:id="detailsNumberColumn" prefWidth="150" text="Номер детали" />

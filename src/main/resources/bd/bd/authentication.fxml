@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="391.0" prefWidth="516.0" style="-fx-background-color: #333;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bd.bd.AuthenticationController">
+<AnchorPane prefHeight="391.0" prefWidth="516.0" style="-fx-background-color: #333;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bd.bd.controllers.AuthenticationController">
     <children>
         <VBox alignment="CENTER" layoutX="200.0" layoutY="50.0" spacing="20.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
             <children>
@@ -28,12 +28,12 @@
                         <Font size="14.0" />
                     </font>
                 </PasswordField>
-                <Button fx:id="registerButton" text="Register" onAction="#registerButtonAction" style="-fx-text-fill: white;">
+                <Button fx:id="registerButton" onAction="#registerButtonAction"  text="Register">
                     <font>
-                        <Font size="12.0" />
+                        <Font size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="signInButton" mnemonicParsing="false"  onAction="#signInButtonAction" text="Sign In">
+                <Button fx:id="signInButton" mnemonicParsing="false" onAction="#signInButtonAction" text="Sign In">
                     <font>
                         <Font size="14.0" />
                     </font>

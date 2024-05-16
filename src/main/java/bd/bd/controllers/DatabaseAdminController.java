@@ -1,5 +1,9 @@
-package bd.bd;
+package bd.bd.controllers;
 
+import bd.bd.MainApplication;
+import bd.bd.User;
+import bd.bd.UserDAO;
+import bd.bd.UserDAOImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,6 +22,9 @@ public class DatabaseAdminController {
     public TableColumn<User, String> columnLogin;
     public TableColumn<User, String> columnName;
     public TableColumn<User, String> columnRole;
+
+    private static final UserDAO userDAO = new UserDAOImpl();
+
     @FXML
     public TableView<User> usersTable;
     public Button registerButton;
@@ -38,35 +45,12 @@ public class DatabaseAdminController {
         columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnRole.setCellValueFactory(new PropertyValueFactory<>("role"));
     }
-    public void loadUsers()
-    {
-        ObservableList <User> users = FXCollections.observableArrayList();
-        String SQL_SELECT = "SELECT id, login, name, role FROM users;\n";
-        try (Connection conn = DatabaseHandler.connect();
-             PreparedStatement pstmtSelect = conn.prepareStatement(SQL_SELECT))
-        {
-            ResultSet rs = pstmtSelect.executeQuery();
-            while(rs.next())
-            {
-                users.add(new User(rs.getInt("id"),
-                        rs.getString("login"),
-                        rs.getString("name"),
-                        rs.getString("role")));
-            }
-            usersTable.setItems(users);
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            Alerts.showErrSQL(e.getMessage());
-        }
-
-    }
     public void setApp(MainApplication app) {
         this.app = app;
     }
 
     public void handleExit(ActionEvent actionEvent) {
-        app.switchWindow("authentication.fxml","Вход");
+        app.showLoginWindow();
     }
 
     public void handleDeleteRecord(ActionEvent actionEvent) {
@@ -79,7 +63,7 @@ public class DatabaseAdminController {
             alert.setContentText("Вы точно хотите удалить выбранную запись?");
             Optional<ButtonType> action = alert.showAndWait();
             if ((action.isPresent()) && (action.get() == ButtonType.OK)) {
-                deleteUserFromDatabase(selectedUser.getUserId());
+                userDAO.deleteUserFromDatabase(selectedUser.getUserId());
                 usersTable.getItems().remove(selectedUser);
             }
 
@@ -92,29 +76,9 @@ public class DatabaseAdminController {
             alert.showAndWait();
         }
     }
-    public void deleteUserFromDatabase(Integer id)
-    {
-        String SQL_DELETE="DELETE FROM users WHERE id = ?;\n";
-        try (Connection conn = DatabaseHandler.connect();
-        PreparedStatement pstmtDelete = conn.prepareStatement(SQL_DELETE)){
-            pstmtDelete.setInt(1,id);
-            int affected = pstmtDelete.executeUpdate();
-            if(affected>0)
-            {
-                Alerts.showSuc("Всё удалено");
-            }
-            else
-            {
-                Alerts.showErrSQL("Не удалено");
-            }
-
-        } catch (SQLException e) {
-            Alerts.showErrSQL(e.getMessage());
-        }
-    }
 
     public void handleShowUsers(ActionEvent actionEvent) {
-        loadUsers();
+        usersTable.setItems(userDAO.loadUsers());
     }
 
     public void handleAddNewUser(ActionEvent actionEvent) {
